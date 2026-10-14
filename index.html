@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ScanList – QR Product Scanner</title>
+<link rel="stylesheet" href="css/style.css"></head>
+<body><div class="wrap">
+<h1>📦 ScanList <span class="sm">· built-in QR scanner, no scanner machine</span></h1>
+<div class="tabs"><button id="t-scan" class="on">Scan</button><button id="t-list">List<span class="badge" id="cnt">0</span></button><button id="t-prod">Product QRs</button></div>
+
+<section id="v-scan">
+  <div class="card">
+    <div class="cam" id="cam"><span id="camMsg">Camera is off</span><video id="vid" playsinline muted style="display:none"></video><div class="frame"></div></div>
+    <button class="btn" id="start">Start camera scanner</button>
+    <div class="flash" id="flash"></div>
+    <p class="sm" style="margin:10px 0 4px">No camera access? Upload a photo or screenshot of a QR code:</p>
+    <input type="file" id="file" accept="image/*" capture="environment">
+    <canvas id="cv" class="hid"></canvas>
+  </div>
+  <div class="card"><p class="lbl">Try it without printing</p><p class="sm" style="margin-top:0">Open the “Product QRs” tab on another screen and point the camera at a code, or tap to simulate a scan:</p>
+    <div id="sim" style="display:flex;flex-wrap:wrap;gap:6px"></div></div>
+</section>
+
+<section id="v-list" style="display:none">
+  <div class="card"><p class="lbl">Scanned items</p><div id="items"></div><div class="tot"><span>Total</span><span id="total">$0.00</span></div>
+    <div style="display:flex;gap:8px;margin-top:12px"><button class="btn ghost sm" id="copy" style="flex:1">Copy list</button><button class="btn ghost sm" id="clear" style="flex:1">Clear</button></div>
+    <div class="flash" id="flash2"></div></div>
+</section>
+
+<section id="v-prod" style="display:none">
+  <div class="card"><p class="lbl">Add a product (generates its QR)</p>
+    <div class="two"><input id="pn" placeholder="Product name"><input id="pp" placeholder="Price" type="number" step="0.01"></div>
+    <input id="pk" placeholder="SKU / ID (optional)"><button class="btn" id="add">Generate QR</button></div>
+  <div class="pg" id="pgrid"></div>
+  <p class="sm">Each QR stores the product’s ID, name and price. Print them and stick them on products.</p>
+</section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/app.js"></script></body></html>
